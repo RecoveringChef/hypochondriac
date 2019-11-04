@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-const Stories = new Schema({
+const News = new Schema({
     headline: { type: String, required: true },
     descrption: { type: String, required: true }
 });
 
 
-module.exports = mongoose.model('news', Stories);
+module.exports = mongoose.model('news', News);

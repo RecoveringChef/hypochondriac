@@ -1,15 +1,6 @@
 module.exports = {
+  Conditions: require("./conditions"),
+  News: require("./news"),
+  Symptoms: require("./symptoms"),
   Account: require("./account")
-};
-
-module.exports = {
-  Account: require("./news")
-};
-
-module.exports = {
-  Account: require("./symptoms")
-};
-
-module.exports = {
-  Account: require("./conditions")
 };
