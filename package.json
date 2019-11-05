@@ -1,7 +1,7 @@
 {
-  "name": "Hypochondriac",
+  "name": "mern_auth",
   "version": "1.0.0",
-  "description": "Full Mern with authentication using passport local strategy",
+  "description": "Mern Demo with authentication using passport local strategy",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -12,7 +12,7 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
-  "author": "Dan Crenshaw",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^4.1.0",

@@ -55,7 +55,6 @@ passport.deserializeUser(Account.deserializeUser());
 
 /* === Mongoose Connection === */
 mongoose.connect('mongodb://localhost/hypochondriac', { useNewUrlParser: true });
-
 /* === Error Handling === */
 
 /* Development error handler will print stacktrace */

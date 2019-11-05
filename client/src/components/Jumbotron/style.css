@@ -1,3 +1,7 @@
 .jumbotron {
   padding: 100px;
+  height: 120px;
+  background-color: white;
+  color: rgb(0, 120,190);
+  font-weight: 600;
 }
