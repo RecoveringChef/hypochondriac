@@ -1,0 +1,19 @@
+.footer {
+  padding: 10px;
+  height: 8%;
+  width: 100%;
+  background-color:rgb(0,120,190);
+  color: black;
+  font-weight: 500;
+  text-align: center;
+  border: rgb(247, 117, 11) 1px;
+  position: fixed;
+  bottom: 0;
+}
+.first{
+  font-size: 10px;
+
+}
+.second{
+  font-size: 8px;
+}

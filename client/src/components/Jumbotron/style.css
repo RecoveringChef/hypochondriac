@@ -1,7 +1,31 @@
 .jumbotron {
-  padding: 100px;
-  height: 120px;
+  padding: 20px;
+  height: 16%;
+  width: 100%;
+  margin: 0;
   background-color: white;
+  color: black;
+  font-weight: 500;
+  font-size: 4rem;
+  border-bottom:solid cornflowerblue 1px;
+ 
+  
+}
+
+.headEnd{
+  text-align-last: left;;
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
   color: rgb(0, 120,190);
-  font-weight: 600;
+}
+
+.tailEnd{
+  font-family: 'EB Garamond', serif;
+  font-weight: 550;
+  color: black;
+  font-style: normal;
+}
+
+.logBut{
+  float:right;
 }
