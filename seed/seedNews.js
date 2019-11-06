@@ -10,8 +10,8 @@ mongoose.connect(
 
 const storiesSeed = [
     {
-        headline: "Ebola breaks containemet!",
-        description: "Ebola has escaped the almost non-existant 'containment ring' supposedly set up by WHO officials. "
+        headline: "",
+        description: " "
     },
 
 ];

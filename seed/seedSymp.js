@@ -10,8 +10,10 @@ mongoose.connect(
 
 const symptomSeed = [
     {
-        name: "Flu-Like symptoms"
+        name: "Cough"
     },
+
+
 
 ];
 

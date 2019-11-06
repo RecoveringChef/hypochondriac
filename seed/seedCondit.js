@@ -10,21 +10,21 @@ mongoose.connect(
 
 const conditionsSeed = [
   {
-    name: "Super Flu",
-    description: "Starts like the regular flu, but then you either die (most likely) or get to walk to Las Vegas",
-    link: "https://amzn.to/2qj6iSk"
+    name: "",
+    description: "",
+    link: ""
   },
 
-];
+  {
 
-db.Conditions
-  .remove({})
-  .then(() => db.Conditions.collection.insertMany(conditionsSeed))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+    db.Conditions
+      .remove({})
+      .then(() => db.Conditions.collection.insertMany(conditionsSeed))
+      .then(data => {
+        console.log(data.result.n + " records inserted!");
+        process.exit(0);
+      })
+      .catch(err => {
+        console.error(err);
+        process.exit(1);
+      });
