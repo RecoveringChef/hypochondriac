@@ -37,13 +37,13 @@ const AuthExample = () => (
 					<li><Link to="/register">Register a New User</Link></li>
 				</ul> */}
 				<Switch>
-					<Route path="/home" component={Home} />
-					<Route path="/" component={Home} />
-					<Route path="/reader" component={PublicRoute} />
-					<Route path="/results" component={Results} />
-					<Route path="/login" component={Login} />
-					<Route path="/register" component={Register} />
-					<PrivateRoute path="/pinned" component={ProtectedRoute} />
+					<Route exact path="/home" component={Home} />
+					<Route exact path="/" component={Home} />
+					<Route exact path="/reader" component={PublicRoute} />
+					<Route exact path="/results" component={Results} />
+					<Route exact path="/login" component={Login} />
+					<Route exact path="/register" component={Register} />
+					<PrivateRoute exact path="/pinned" component={ProtectedRoute} />
 					{/* <Route component={NoMatch} /> */}
 				</Switch>
 			</div>
