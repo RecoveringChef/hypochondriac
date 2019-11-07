@@ -15,15 +15,12 @@ import Register from "./components/Register";
 import { Container } from "./components/Grid";
 import PublicRoute from "./pages/PublicRoute";
 import ProtectedRoute from "./pages/PublicRoute";
-import Home from "./pages/Home"
+import Home from "./pages/Home";
+import Results from "./pages/Results";
 import './App.css';
 import Footer from './components/Footer';
 
-//I want to add some basic inline styling here, even though we are bringing in styles
-const listStyle = {
-	color: 'cornflowerblue',
-	listStyle: 'none'
-};
+
 //Now we have all the stuff we need .. let's render some components with the Router
 const AuthExample = () => (
 	<div>
@@ -31,7 +28,7 @@ const AuthExample = () => (
 		<Jumbotron />
 		{/* <Nav className="App-header" />  */}
 		<Router>
-			<Container>
+			<div>
 				<AuthButton />
 				{/* <ul style={listStyle}>
 					<li><Link to="/home">Home Page</Link></li>
@@ -41,13 +38,15 @@ const AuthExample = () => (
 				</ul> */}
 				<Switch>
 					<Route path="/home" component={Home} />
-					<Route path="/public" component={PublicRoute} />
+					<Route path="/" component={Home} />
+					<Route path="/reader" component={PublicRoute} />
+					<Route path="/results" component={Results} />
 					<Route path="/login" component={Login} />
 					<Route path="/register" component={Register} />
-					<PrivateRoute path="/protected" component={ProtectedRoute} />
+					<PrivateRoute path="/pinned" component={ProtectedRoute} />
 					{/* <Route component={NoMatch} /> */}
 				</Switch>
-			</Container>
+			</div>
 		</Router>
 
 		<Footer />
@@ -70,7 +69,7 @@ const AuthButton = withRouter(({ history }) => (
 			</button>
 		</div>
 	) : (
-			<p>You are not logged in.</p>
+			<p></p>
 		)
 ))
 

@@ -14,17 +14,15 @@ const conditionsSeed = [
     description: "",
     link: ""
   },
+];
 
-  {
 
-    db.Conditions
-      .remove({})
-      .then(() => db.Conditions.collection.insertMany(conditionsSeed))
-      .then(data => {
-        console.log(data.result.n + " records inserted!");
-        process.exit(0);
-      })
-      .catch(err => {
-        console.error(err);
-        process.exit(1);
-      });
+db.Conditions.collection.insertMany(conditionsSeed)
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });

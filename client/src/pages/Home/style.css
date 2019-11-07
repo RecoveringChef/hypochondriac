@@ -1,0 +1,37 @@
+
+.myBox{
+
+    margin: 0 auto;
+    width: 95%;
+    padding-left: 0;
+    padding-right: 0;
+    border: greenyellow solid 2px;
+
+}
+
+.noMargin{
+    margin-left: 0;
+    margin-right: 0;
+    height: 100%;
+
+}
+
+.symp{
+    background-color: tan;
+    text-align: center;
+    height: 80px;
+}
+
+.cond{
+
+    background-color: rgb(124, 221, 120);
+    text-align: center;
+    max-height: 300px;
+    min-height: 100px;
+}
+
+.stories{
+    background-color: teal;
+    text-align: center;
+
+}

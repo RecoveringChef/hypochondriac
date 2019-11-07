@@ -10,16 +10,27 @@ mongoose.connect(
 
 const symptomSeed = [
     {
+        name: "Flu Like Symptoms"
+    },
+    {
         name: "Cough"
     },
-
-
+    {
+        name: "Fever"
+    },
+    {
+        name: "Runny Nose"
+    },
+    {
+        name: "Stuffy Nose"
+    },
 
 ];
 
-db.Symptoms
-    .remove({})
-    .then(() => db.Symptoms.collection.insertMany(symptomSeed))
+
+
+
+db.Symptoms.collection.insertMany(symptomSeed)
     .then(data => {
         console.log(data.result.n + " records inserted!");
         process.exit(0);
