@@ -4,6 +4,8 @@ import Row from "react-bootstrap/Row";
 import Card from "../../components/Card";
 import Col from "react-bootstrap/Col";
 import API from "../../utils/API"
+//import List from "../../components/List"
+import ListItem from "../../components/List"
 import "./style.css";
 
 
@@ -85,6 +87,13 @@ class Home extends React.Component {
                                 <h3>Hypochondriac Symptom Checker</h3>
 
                                 <hr />
+                                {this.state.symptoms.map(item => (
+
+                                    <ListItem>
+                                        {item.name}
+                                    </ListItem>
+
+                                ))}
 
                                 {/* should pull in list (possibly 2 or 3 column) of Symptoms with radio buttons next to them. As each button is clicked it narrows the list of conditions below */}
 
@@ -100,6 +109,13 @@ class Home extends React.Component {
                                 <h3>Medical Conditions of Concern</h3>
 
                                 <hr />
+                                {this.state.conditions.map(item => (
+
+                                    <ListItem>
+                                        {item.name}
+                                    </ListItem>
+
+                                ))}
                                 {/* need to pull in names of conditions here alphabeticaly (possibly 2 column) and scroll through. each naem shoudl be clickabel and call up full info on that condition */}
                             </Col>
                         </Row>
