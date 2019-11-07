@@ -11,10 +11,14 @@ import "./style.css";
 class Home extends React.Component {
 
     state = {
-        news: []
+        news: [],
+        conditions: [],
+        symptoms: []
     }
     componentDidMount() {
         this.getNewsMethod();
+        this.getConditionsMethod();
+        this.getSymptomsMethod();
     }
 
     getNewsMethod = () => {
@@ -27,8 +31,31 @@ class Home extends React.Component {
                 })
             })
             .catch(err => console.log(err))
+    };
 
-    }
+    getConditionsMethod = () => {
+
+        API.getConditions()
+            .then(data => {
+                console.log(data)
+                this.setState({
+                    conditions: data.data
+                })
+            })
+            .catch(err => console.log(err))
+    };
+
+    getSymptomsMethod = () => {
+
+        API.getSymptoms()
+            .then(data => {
+                console.log(data)
+                this.setState({
+                    symptoms: data.data
+                })
+            })
+            .catch(err => console.log(err))
+    };
 
 
     render() {
@@ -46,7 +73,7 @@ class Home extends React.Component {
                             >
                                 {item.description}
                             </Card>
-                        ))}
+                        ))};
 
                         { /* all cards should be clickable to open into their own screen. Also be able to pin "worry about it later" if user is logged in */}
                     </Col>
@@ -79,8 +106,8 @@ class Home extends React.Component {
                     </Col>
                 </Row>
             </div>
-        )
-    }
+        );
+    };
 }
 
 export default Home
