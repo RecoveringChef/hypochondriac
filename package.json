@@ -12,7 +12,7 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
-  "author": "",
+  "author": "Dan Crenshaw",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^4.1.0",

@@ -15,7 +15,8 @@ class Home extends React.Component {
     state = {
         news: [],
         conditions: [],
-        symptoms: []
+        symptoms: [],
+        secondColumnStart: 0
     }
     componentDidMount() {
         this.getNewsMethod();
@@ -60,7 +61,12 @@ class Home extends React.Component {
     };
 
 
+
+
+
+
     render() {
+        //    const secondColumnStart = Math.floor(this.state.symptoms.length / 2),
         return (
             <div className="myBox">
                 <Row className="noMargin">
@@ -87,6 +93,8 @@ class Home extends React.Component {
                                 <h3>Hypochondriac Symptom Checker</h3>
 
                                 <hr />
+
+
                                 {this.state.symptoms.map(item => (
 
                                     <ListItem>
