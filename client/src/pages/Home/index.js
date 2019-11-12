@@ -94,15 +94,15 @@ class Home extends React.Component {
 
                                 <hr />
 
+                                <div className="doubleCol">
+                                    {this.state.symptoms.map(item => (
 
-                                {this.state.symptoms.map(item => (
+                                        <ListItem>
+                                            {item.name}
+                                        </ListItem>
 
-                                    <ListItem>
-                                        {item.name}
-                                    </ListItem>
-
-                                ))}
-
+                                    ))}
+                                </div>
                                 {/* should pull in list (possibly 2 or 3 column) of Symptoms with radio buttons next to them. As each button is clicked it narrows the list of conditions below */}
 
 
@@ -117,13 +117,15 @@ class Home extends React.Component {
                                 <h3>Medical Conditions of Concern</h3>
 
                                 <hr />
-                                {this.state.conditions.map(item => (
+                                <div className="doubleCol">
+                                    {this.state.conditions.map(item => (
 
-                                    <ListItem>
-                                        {item.name}
-                                    </ListItem>
+                                        <ListItem>
+                                            {item.name}
+                                        </ListItem>
 
-                                ))}
+                                    ))}
+                                </div>
                                 {/* need to pull in names of conditions here alphabeticaly (possibly 2 column) and scroll through. each naem shoudl be clickabel and call up full info on that condition */}
                             </Col>
                         </Row>
