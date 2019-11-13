@@ -98,6 +98,14 @@ class Home extends React.Component {
                                     {this.state.symptoms.map(item => (
 
                                         <ListItem>
+                                            <input
+                                                type="radio"
+                                                name="react-tips"
+                                                value="option 2"
+                                                checked={false}
+                                                className="form-check-input"
+                                            />
+
                                             {item.name}
                                         </ListItem>
 
@@ -119,7 +127,6 @@ class Home extends React.Component {
                                 <hr />
                                 <div className="doubleCol">
                                     {this.state.conditions.map(item => (
-
                                         <ListItem>
                                             {item.name}
                                         </ListItem>
