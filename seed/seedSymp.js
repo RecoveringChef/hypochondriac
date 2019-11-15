@@ -9,26 +9,29 @@ mongoose.connect(
 );
 
 const symptomSeed = [
-    {
-        name: "Flu Like Symptoms",
-
-    },
-    {
-        name: "Cough",
-
-    },
-    {
-        name: "Fever",
-
-    },
-    {
-        name: "Runny Nose",
-
-    },
-    {
-        name: "Stuffy Nose",
-
-    }
+    // { name: "Flu Like Symptoms",  },
+    // { name: "Cough",  },
+    // { name: "Fever",  },
+    // { name: "Runny Nose", },
+    // { name: "Stuffy Nose", }
+    // { name: "Memory Loss", },
+    // { name: "Irritability", },
+    // { name: "Difficult Urination", },
+    // { name: "Frequent Urination", },
+    // { name: "Diarrhea", },
+    // { name: "Swollen Nodes", },
+    // { name: "Seizures", },
+    // { name: "Vomitting", },
+    // { name: "Anxiety", },
+    // { name: "Headache", },
+    // { name: "Sleepiness", },
+    // { name: "Sores", },
+    // { name: "Rash", },
+    // { name: "Muscle Soreness", },
+    // { name: "Personality Change", },
+    // { name: "Hallucinations", },
+    // { name: "Joint or Bone Pain", },
+    // { name: "Nausea", }
 ];
 
 
