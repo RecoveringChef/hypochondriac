@@ -79,7 +79,22 @@ class Home extends React.Component {
                             <Card
                                 title={item.headline}
                             >
-                                {item.description}
+                                <div className="storyText">
+                                    {item.description.split("\n\n").map((paragraph, i) => {
+                                        return (
+                                            <p key={`para-${i}`}>
+                                                {paragraph.split("\n").map((line, j) => {
+                                                    return (
+                                                        <React.Fragment key={`line-${j}`}>
+                                                            {line}
+                                                            <br />
+                                                        </React.Fragment>
+                                                    );
+                                                })}
+                                            </p>
+                                        );
+                                    })}
+                                </div>
                             </Card>
                         ))};
 

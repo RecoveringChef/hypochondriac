@@ -1,9 +1,11 @@
 .list-group-item {
-  font-size: 16px;
-   /* columns: 2; */
- 
+  font-size: 14px; 
 }
 
 .doubleCol{
   columns: 2 auto;
+}
+
+.storyText{
+  /* text-justify: newspaper; */
 }
