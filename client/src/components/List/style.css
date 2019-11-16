@@ -7,5 +7,10 @@
 }
 
 .storyText{
-  /* text-justify: newspaper; */
+  text-justify: newspaper;
+}
+
+h2{
+  font-weight: 800;
+  font-size: 2.3em;
 }

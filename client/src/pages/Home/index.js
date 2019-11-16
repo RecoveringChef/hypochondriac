@@ -66,7 +66,6 @@ class Home extends React.Component {
 
 
     render() {
-        //    const secondColumnStart = Math.floor(this.state.symptoms.length / 2),
         return (
             <div className="myBox">
                 <Row className="noMargin">
@@ -105,7 +104,7 @@ class Home extends React.Component {
 
                             <Col className="symp">
 
-                                <h3>Hypochondriac Symptom Checker</h3>
+                                <h2>Hypochondriac Symptom Checker</h2>
 
                                 <hr />
 
@@ -137,7 +136,7 @@ class Home extends React.Component {
                             <Col className="cond">
 
 
-                                <h3>Medical Conditions of Concern</h3>
+                                <h2>Medical Conditions of Concern</h2>
 
                                 <hr />
                                 <div className="doubleCol">
