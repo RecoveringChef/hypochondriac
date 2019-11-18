@@ -16,7 +16,6 @@ class Home extends React.Component {
         news: [],
         conditions: [],
         symptoms: [],
-        secondColumnStart: 0
     }
     componentDidMount() {
         this.getNewsMethod();
@@ -61,10 +60,6 @@ class Home extends React.Component {
             })
             .catch(err => console.log(err))
     };
-
-
-
-
 
 
     render() {
@@ -119,9 +114,7 @@ class Home extends React.Component {
                                                 name="selector"
                                                 value="option 2"
                                                 checked={false}
-                                                className="form-check-input"
-
-
+                                                className="sympCheck"
                                             />
 
                                             {item.name}
