@@ -40,7 +40,8 @@ class Home extends React.Component {
 
         API.getConditions()
             .then(data => {
-                console.log(data)
+                console.log(data);
+                data.data.sort((a, b) => a.name.localeCompare(b.name));
                 this.setState({
                     conditions: data.data
                 })
@@ -52,7 +53,8 @@ class Home extends React.Component {
 
         API.getSymptoms()
             .then(data => {
-                console.log(data)
+                console.log(data);
+                data.data.sort((a, b) => a.name.localeCompare(b.name));
                 this.setState({
                     symptoms: data.data
                 })
@@ -111,13 +113,15 @@ class Home extends React.Component {
                                 <div className="doubleCol">
                                     {this.state.symptoms.map(item => (
 
-                                        <ListItem>
+                                        <ListItem key={item.ObjectID}>
                                             <input
                                                 type="radio"
-                                                name="react-tips"
+                                                name="selector"
                                                 value="option 2"
                                                 checked={false}
                                                 className="form-check-input"
+
+
                                             />
 
                                             {item.name}
@@ -125,7 +129,7 @@ class Home extends React.Component {
 
                                     ))}
                                 </div>
-                                {/* should pull in list (possibly 2 or 3 column) of Symptoms with radio buttons next to them. As each button is clicked it narrows the list of conditions below */}
+                                {/* should pull in list of Symptoms with radio buttons next to them. As each button is clicked it narrows the list of conditions below */}
 
 
                             </Col>
@@ -141,13 +145,13 @@ class Home extends React.Component {
                                 <hr />
                                 <div className="doubleCol">
                                     {this.state.conditions.map(item => (
-                                        <ListItem>
+                                        <ListItem key={item.ObjectID}>
                                             {item.name}
                                         </ListItem>
 
                                     ))}
                                 </div>
-                                {/* need to pull in names of conditions here alphabeticaly (possibly 2 column) and scroll through. each naem shoudl be clickabel and call up full info on that condition */}
+                                {/* need to pull in names of conditions here alphabeticaly and scroll through. each name shoudl be clickabel and call up full info on that condition */}
                             </Col>
                         </Row>
                     </Col>
