@@ -3,19 +3,21 @@ import React from 'react';
 import Row from "react-bootstrap/Row";
 import Card from "../../components/Card";
 import Col from "react-bootstrap/Col";
+//import InputGroup from "react-bootstrap/InputGroup";
+import Modal from "react-bootstrap/Modal";
 import API from "../../utils/API"
 //import List from "../../components/List"
 import ListItem from "../../components/List"
 import "./style.css";
 
 
-
 class Home extends React.Component {
-
     state = {
         news: [],
         conditions: [],
         symptoms: [],
+        modalShow: [],
+        selectedSymptom: []
     }
     componentDidMount() {
         this.getNewsMethod();
@@ -40,7 +42,7 @@ class Home extends React.Component {
         API.getConditions()
             .then(data => {
                 console.log(data);
-                data.data.sort((a, b) => a.name.localeCompare(b.name));
+                data.data.sort((a, b) => a.name.localeCompare(b.name))
                 this.setState({
                     conditions: data.data
                 })
@@ -61,15 +63,30 @@ class Home extends React.Component {
             .catch(err => console.log(err))
     };
 
+    filterConditionsMethod = () => {
+
+        API.getConditions()
+            .then(data => {
+                console.log(data);
+                data.data.sort((a, b) => a.name.localeCompare(b.name));
+                this.setState({
+                    selectedSymptom: data.data
+                })
+            })
+            .catch(err => console.log(err))
+    };
+
+    setModalShow = () => {
+        this.setState({ modalShow: true })
+    };
+
 
     render() {
         return (
             <div className="myBox">
                 <Row className="noMargin">
                     <Col className="stories" >
-
                         <h2>Worrisome Health News</h2>
-
                         <hr />
                         {this.state.news.map(item => (
                             <Card
@@ -93,58 +110,39 @@ class Home extends React.Component {
                                 </div>
                             </Card>
                         ))};
-
                         { /* all cards should be clickable to open into their own screen. Also be able to pin "worry about it later" if user is logged in */}
                     </Col>
                     <Col >
                         <Row>
-
                             <Col className="symp">
-
                                 <h2>Hypochondriac Symptom Checker</h2>
-
                                 <hr />
-
                                 <div className="doubleCol">
                                     {this.state.symptoms.map(item => (
-
                                         <ListItem key={item.ObjectID}>
-                                            <input
-                                                type="radio"
-                                                name="selector"
-                                                value="option 2"
-                                                checked={false}
-                                                className="sympCheck"
-                                            />
-
+                                            <input type="checkbox" className="sympSelect" />
                                             {item.name}
                                         </ListItem>
-
                                     ))}
                                 </div>
-                                {/* should pull in list of Symptoms with radio buttons next to them. As each button is clicked it narrows the list of conditions below */}
-
-
+                                {/* should pull in list of Symptoms with checkboxes. As each checkbox is clicked it narrows the list of conditions below */}
                             </Col>
                         </Row>
                         <Row>
-
-
                             <Col className="cond">
-
-
                                 <h2>Medical Conditions of Concern</h2>
-
                                 <hr />
                                 <div className="doubleCol">
-                                    {this.state.conditions.map(item => (
-                                        <ListItem key={item.ObjectID}>
-                                            {item.name}
-                                        </ListItem>
-
-                                    ))}
+                                    {this.state.conditions
+                                        //.filter(condition => condition.symptoms.includes(this.state.selectedSymptom))
+                                        .filter(condition => !this.state.selectedSymptom.length || condition.symptoms.includes(this.state.selectedSymptom))
+                                        .map(item => (
+                                            <ListItem key={item.ObjectID} onClick={() => this.setState({ modalShow: true })}>
+                                                {item.name}
+                                            </ListItem>
+                                        ))}
                                 </div>
-                                {/* need to pull in names of conditions here alphabeticaly and scroll through. each name shoudl be clickabel and call up full info on that condition */}
+                                {/* Pull in names of conditions here. Each name should be clickable and call up full info on that condition */}
                             </Col>
                         </Row>
                     </Col>
