@@ -70,10 +70,8 @@ class Home extends React.Component {
             .then(data => {
                 console.log(data);
                 data.data.sort((a, b) => a.name.localeCompare(b.name));
-                data.data.filter(condition => !this.state.selectedSymptom.length || condition.symptoms.includes(this.state.selectedSymptom))
-                this.setState({
-                    selectedSymptom: data.data
-                })
+                const filtered_data = data.data.filter(condition => !condition.symptoms.includes(this.state.selectedSymptom || this.state.selectedSymptom.length))
+                this.setState({ selectedSymptom: filtered_data });
             })
             .catch(err => console.log(err))
     };
@@ -128,7 +126,8 @@ class Home extends React.Component {
                                                 name="slector"
                                                 type="checkbox"
                                                 className="sympSelect"
-                                                onClick={() => this.setState({ selectedSymptom: true })}
+                                                onClick={() => this.setState(prevState => ({ selectedSymptom: [...prevState.selectedSymptom, item] }))}
+
                                             />
                                             {item.name}
                                         </ListItem>
