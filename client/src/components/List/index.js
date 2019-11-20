@@ -10,7 +10,7 @@ export const List = ({ children }) => (
 );
 
 function ListItem(props) {
-  return <li className="list-group-item">{props.children}</li>;
+  return <li className="list-group-item" {...props}>{props.children}</li>;
 }
 
 export default ListItem;

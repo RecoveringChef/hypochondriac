@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Card from "../../components/Card";
@@ -18,8 +19,9 @@ class Home extends React.Component {
         news: [],
         conditions: [],
         symptoms: [],
-        modalShow: [],
-        selectedSymptom: []
+        selectedSymptom: [],
+        modalShow: false,
+        selectedCondition: null
     }
     componentDidMount() {
         this.getNewsMethod();
@@ -76,23 +78,43 @@ class Home extends React.Component {
             .catch(err => console.log(err))
     };
 
-    setModalShow = () => {
-        this.setState({ modalShow: true })
+    toggleModal = () => {
+        this.setState(prevState => ({ modalShow: !prevState.modalShow }))
     };
 
-
-
-
     render() {
+        const { conditions, selectedSymptom, modalShow, selectedCondition } = this.state;
+        let allConditions = [], filteredConditions;
+        const selectedSymptoms = selectedSymptom.map(s => s._id);
+        if (selectedSymptoms.length) {
+            conditions.forEach(c => allConditions = allConditions.concat(c.symptoms));
+            filteredConditions = allConditions.filter(c => selectedSymptoms.includes(c));
+            filteredConditions = _.uniq(filteredConditions);
+            filteredConditions = filteredConditions.map(co => conditions.find(c => c.symptoms.includes(co)));
+            filteredConditions = _.uniqBy(filteredConditions, '_id');
+        } else {
+            filteredConditions = conditions
+        }
         return (
             <div className="myBox">
+                {modalShow && <Modal show={modalShow} animation={false} centered onHide={this.toggleModal}>
+                    <Modal.Header closeButton>
+                        <Modal.Title> {selectedCondition.name}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body> {selectedCondition.description}</Modal.Body>
+                    <Modal.Footer>
+                        {selectedCondition.link}
+                        {/* <Button onClick={() => this.setState({ modalShow: false })}>Close</Button> */}
+                    </Modal.Footer>
+                </Modal>}
                 <Row className="noMargin">
                     <Col className="stories" >
                         <h2>Worrisome Health News</h2>
                         <hr />
-                        {this.state.news.map(item => (
+                        {this.state.news.map((item, i) => (
                             <Card
                                 title={item.headline}
+                                key={i}
                             >
                                 <div className="storyText">
                                     {item.description.split("\n\n").map((paragraph, i) => {
@@ -141,26 +163,13 @@ class Home extends React.Component {
                                 <h2>Medical Conditions of Concern</h2>
                                 <hr />
                                 <div className="doubleCol">
-                                    {this.state.conditions
-                                        .filter(condition => !this.state.selectedSymptom.length || condition.symptoms.includes(this.state.selectedSymptom))
-                                        .map(item => (
-                                            <div>
-                                                <ListItem key={item.ObjectID} onClick={() => this.setState({ modalShow: true })}>
-                                                    {item.name}
-                                                </ListItem>
-
-                                                <Modal animation={false} centered>
-                                                    <Modal.Header closeButton>
-                                                        <Modal.Title> {item.name}</Modal.Title>
-                                                    </Modal.Header>
-                                                    <Modal.Body> {item.description}</Modal.Body>
-                                                    <Modal.Footer>
-                                                        {item.link}
-                                                        {/* <Button onClick={() => this.setState({ modalShow: false })}>Close</Button> */}
-                                                    </Modal.Footer>
-                                                </Modal>
-                                            </div>
-                                        ))}
+                                    {filteredConditions.map(item => (
+                                        <div>
+                                            <ListItem key={item.ObjectID} onClick={() => this.setState({ modalShow: true, selectedCondition: item })}>
+                                                {item.name}
+                                            </ListItem>
+                                        </div>
+                                    ))}
                                 </div>
                                 {/* Pull in names of conditions here. Each name should be clickable and call up full info on that condition */}
                             </Col>
