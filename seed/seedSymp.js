@@ -31,7 +31,8 @@ const symptomSeed = [
     // { name: "Personality Change", },
     // { name: "Hallucinations", },
     // { name: "Joint or Bone Pain", },
-    // { name: "Nausea", }
+    // { name: "Nausea", },
+    { name: "Dizziness", }
 ];
 
 

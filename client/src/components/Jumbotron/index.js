@@ -18,9 +18,9 @@ function Jumbotron({ children }) {
   return <div className="jumbotron">
 
 
-    <a className="headEnd" style={{ fontFamily: 'Garamond' }}>Hypochondriac<span className="tailEnd">MD</span></a>
+    <a href="/home" className="headEnd" style={{ fontFamily: 'Garamond' }}>Hypochondriac<span className="tailEnd">MD</span></a>
 
-    <a href="/login"><Button className="logBut" variant="outline-secondary" size="sm">Log In</Button></a>
+    {/* <a href="/login"><Button className="logBut" variant="outline-secondary" size="sm">Log In</Button></a> */}
 
 
   </div>;

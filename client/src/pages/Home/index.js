@@ -1,13 +1,15 @@
 import React from 'react';
-//import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Card from "../../components/Card";
 import Col from "react-bootstrap/Col";
 //import InputGroup from "react-bootstrap/InputGroup";
-import Modal from "react-bootstrap/Modal";
 import API from "../../utils/API"
 //import List from "../../components/List"
 import ListItem from "../../components/List"
+import Modal from "react-bootstrap/Modal";
+import ModalDialog from "react-bootstrap/ModalDialog";
+import ModalHeader from "react-bootstrap/ModalHeader";
 import "./style.css";
 
 
@@ -64,11 +66,11 @@ class Home extends React.Component {
     };
 
     filterConditionsMethod = () => {
-
         API.getConditions()
             .then(data => {
                 console.log(data);
                 data.data.sort((a, b) => a.name.localeCompare(b.name));
+                // data.data.filter((state) => { true })
                 this.setState({
                     selectedSymptom: data.data
                 })
@@ -79,6 +81,8 @@ class Home extends React.Component {
     setModalShow = () => {
         this.setState({ modalShow: true })
     };
+
+
 
 
     render() {
@@ -120,7 +124,12 @@ class Home extends React.Component {
                                 <div className="doubleCol">
                                     {this.state.symptoms.map(item => (
                                         <ListItem key={item.ObjectID}>
-                                            <input type="checkbox" className="sympSelect" />
+                                            <input
+                                                name="slector"
+                                                type="checkbox"
+                                                className="sympSelect"
+                                                onClick={() => this.setState({ selectedSymptom: true })}
+                                            />
                                             {item.name}
                                         </ListItem>
                                     ))}
@@ -134,12 +143,24 @@ class Home extends React.Component {
                                 <hr />
                                 <div className="doubleCol">
                                     {this.state.conditions
-                                        //.filter(condition => condition.symptoms.includes(this.state.selectedSymptom))
                                         .filter(condition => !this.state.selectedSymptom.length || condition.symptoms.includes(this.state.selectedSymptom))
                                         .map(item => (
-                                            <ListItem key={item.ObjectID} onClick={() => this.setState({ modalShow: true })}>
-                                                {item.name}
-                                            </ListItem>
+                                            <div>
+                                                <ListItem key={item.ObjectID} onClick={() => this.setState({ modalShow: true })}>
+                                                    {item.name}
+                                                </ListItem>
+
+                                                <Modal animation={false} centered>
+                                                    <Modal.Header closeButton>
+                                                        <Modal.Title> {item.name}</Modal.Title>
+                                                    </Modal.Header>
+                                                    <Modal.Body> {item.description}</Modal.Body>
+                                                    <Modal.Footer>
+                                                        {item.link}
+                                                        {/* <Button onClick={() => this.setState({ modalShow: false })}>Close</Button> */}
+                                                    </Modal.Footer>
+                                                </Modal>
+                                            </div>
                                         ))}
                                 </div>
                                 {/* Pull in names of conditions here. Each name should be clickable and call up full info on that condition */}
