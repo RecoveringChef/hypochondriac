@@ -70,7 +70,7 @@ class Home extends React.Component {
             .then(data => {
                 console.log(data);
                 data.data.sort((a, b) => a.name.localeCompare(b.name));
-                // data.data.filter((state) => { true })
+                data.data.filter(condition => !this.state.selectedSymptom.length || condition.symptoms.includes(this.state.selectedSymptom))
                 this.setState({
                     selectedSymptom: data.data
                 })
