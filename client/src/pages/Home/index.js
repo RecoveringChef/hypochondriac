@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Card from "../../components/Card";
 import Col from "react-bootstrap/Col";
+import { Link } from 'react-router-dom';
 //import InputGroup from "react-bootstrap/InputGroup";
 import API from "../../utils/API"
 //import List from "../../components/List"
@@ -102,9 +103,12 @@ class Home extends React.Component {
                         <Modal.Title> {selectedCondition.name}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body> {selectedCondition.description}</Modal.Body>
+                    {/* <Button onClick={() => this.setState({ modalShow: false })}>Close</Button> */}
                     <Modal.Footer>
+                        {/* <Link to={'https://' + selectedCondition.link}>Learn More</Link> */}
                         {selectedCondition.link}
-                        {/* <Button onClick={() => this.setState({ modalShow: false })}>Close</Button> */}
+                        {/* <a href="{selectedCondition.link}" target="_blank" rel="noopener">Learn More</a> */}
+
                     </Modal.Footer>
                 </Modal>}
                 <Row className="noMargin">
