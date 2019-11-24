@@ -106,8 +106,11 @@ class Home extends React.Component {
                     {/* <Button onClick={() => this.setState({ modalShow: false })}>Close</Button> */}
                     <Modal.Footer>
                         {/* <Link to={'https://' + selectedCondition.link}>Learn More</Link> */}
-                        {selectedCondition.link}
+                        {/* {selectedCondition.link} */}
+                        {/* <Link to="route" target="_blank" onClick={(event) => { event.preventDefault(); window.open(href = "{selectedCondition.link}"); }} > AA </Link> */}
+                        {/* <a rel="noopener noreferrer" href="{selectedCondition.link}" target="_blank">Link Here</a> */}
                         {/* <a href="{selectedCondition.link}" target="_blank" rel="noopener">Learn More</a> */}
+                        <a href={selectedCondition.link} target="_blank">Learn More</a>
 
                     </Modal.Footer>
                 </Modal>}
@@ -180,7 +183,7 @@ class Home extends React.Component {
                         </Row>
                     </Col>
                 </Row>
-            </div>
+            </div >
         );
     };
 }
