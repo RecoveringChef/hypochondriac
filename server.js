@@ -54,7 +54,7 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 /* === Mongoose Connection === */
-mongoose.connect(mongodb://SousChef77:Mickey789@ds137090.mlab.com:37090/heroku_20jzxxm4);
+mongoose.connect("mongodb://SousChef77:Mickey789@ds137090.mlab.com:37090/heroku_20jzxxm4");
 /* === Error Handling === */
 
 /* Development error handler will print stacktrace */
