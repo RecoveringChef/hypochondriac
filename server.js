@@ -33,7 +33,7 @@ app.use(flash());
 
 /* Serve up static assets (usually on heroku) */
 if (process.env.NODE_ENV === "production") {
-  app.use(express.staticv("client/build"))
+  app.use(passport.session()); app.use(express.static(path.join(__dirname, '/build')));
 };
 
 /* === Routing === */
